@@ -1,10 +1,26 @@
 import React from 'react'
+import styled from '@emotion/styled'
 
-const Card = ({ imageUrl, name }) => {
+const Image = styled.div`
+  background-image: url(${props => props.url});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+`
+
+const Wrapper = styled.div`
+  min-width: 0;
+  flex-grow: 1;
+  height: 100%;
+`
+
+const Card = ({ imageUrl, name, onClick }) => {
   return (
-    <div>
-        <img src={imageUrl} alt={name} />
-    </div>
+    <Wrapper onClick={onClick}>
+      <Image url={imageUrl} />
+    </Wrapper>
   )
 }
 
