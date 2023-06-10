@@ -1,9 +1,8 @@
 // import logo from './logo.svg';
 import { useState } from 'react'
+import { CandidatesProvider, useCandidates } from './hooks/candidates';
 import styled from '@emotion/styled'
 import Card from './components/Card';
-import Image1 from './assets/images/1.jpeg';
-import Image2 from './assets/images/2.jpeg';
 
 
 const Wrapper = styled.div`
@@ -33,30 +32,70 @@ const CandidatesView = styled.div`
 `
 
 
-
 const CardSelector = ({ selected, onSelect, candidates }) => {
-  return selected ? (
+  
+  return selected.length > 0 ? (
     <ResultView>
-      <Card name={selected.name} imageUrl={selected.imageUrl} /> 
+      <Card name={selected[0].name} imageUrl={selected[0].imageUrl} /> 
     </ResultView>
   ) : (
     <CandidatesView>
       {candidates.map(candidte => (
-        <Card name={candidte.name} imageUrl={candidte.imageUrl} onClick={() => onSelect(candidte)} /> 
+        <Card
+          key={candidte.name}
+          name={candidte.name}
+          imageUrl={candidte.imageUrl}
+          onClick={() => onSelect(candidte)}
+        /> 
       ))}
     </CandidatesView>
   )
 }
 
+const Steps = ({ onEnd }) => {
+    const { candidates } = useCandidates()
+
+  const totalSteps = candidates.length / 2
+  const [step, setStep] = useState(0)
+  const [selected, setSelected] = useState([])
+
+  const start = step * 2
+  const end = start + 2
+  const fight = candidates.slice(start, end)
+
+  const isLastStep = step + 1 === totalSteps
+
+  const goNextStep = () => {
+    if (isLastStep) {
+      onEnd(selected)
+    } else {
+      setStep(step => step + 1)
+    }
+  }
+
+  return (
+    <>
+      <CardSelector
+        selected={selected}
+        candidates={fight}
+        onSelect={(winner) => {
+          setSelected(selected => [...selected, winner])
+        }}
+      />
+      {isLastStep ? <button>Next Round</button> : <button onClick={goNextStep}>Next Step</button>}
+    </>
+  )
+}
+
+const Rounds = () => {  
+  const onStepEnded = () => {}
+
+  return (
+    <Steps onEnd={onStepEnded} />
+  )
+}
+
 function App() {
-  const [candidates, setCandidates] = useState([{
-    name: 'ddd',
-    imageUrl: Image1,
-  }, {
-    name: 'dssdd',
-    imageUrl: Image2,
-  }])
-  const [selected, setSelected] = useState(null)
   
   return (
     <Wrapper>
@@ -64,11 +103,9 @@ function App() {
         Pick your Neighbors
       </Header>
       <Body>
-        <CardSelector
-          selected={selected}
-          candidates={candidates}
-          onSelect={setSelected}
-        />
+        <CandidatesProvider>
+          <Rounds />
+        </CandidatesProvider>
       </Body>
     </Wrapper>
   );

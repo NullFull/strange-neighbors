@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 const Image = styled.div`
-  background-image: url(${props => props.url});
+  background-image: url(${props => props.imageUrl});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 const Card = ({ imageUrl, name, onClick }) => {
   return (
     <Wrapper onClick={onClick}>
-      <Image url={imageUrl} />
+      <Image imageUrl={imageUrl} />
     </Wrapper>
   )
 }
