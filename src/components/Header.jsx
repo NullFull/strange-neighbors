@@ -9,11 +9,12 @@ const HeaderText = styled.header`
 `
 
 const Header = () => {
-  const { step, totalSteps } = useCandidates()
+  const { totalRounds, step, totalSteps } = useCandidates()
+  const roundText = totalRounds === 2 ? 'Final' : `Round of ${totalRounds}`
 
   return (
     <HeaderText>
-      Pick your Neighbors ({step + 1}/{totalSteps})
+      Pick your Neighbors ({roundText} {step + 1}/{totalSteps})
     </HeaderText>
   )
 }

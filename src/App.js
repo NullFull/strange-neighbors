@@ -1,7 +1,7 @@
 import { CandidatesProvider } from './hooks/candidates'
 import styled from '@emotion/styled'
 import Header from './components/Header'
-import Steps from './components/Steps'
+import Rounds from './components/Rounds'
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,12 +14,6 @@ const Body = styled.main`
   min-height: 0;
   flex-grow: 1;
 `
-
-const Rounds = () => {
-  const onStepEnded = () => {}
-
-  return <Steps onEnd={onStepEnded} />
-}
 
 function App() {
   return (
