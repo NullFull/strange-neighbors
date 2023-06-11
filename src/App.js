@@ -8,7 +8,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   text-align: center;
   height: 100%;
-  //background: url(${Background}) no-repeat center center fixed;
 `
 
 const Body = styled.main`
