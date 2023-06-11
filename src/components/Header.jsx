@@ -9,12 +9,18 @@ const HeaderText = styled.header`
 `
 
 const Header = () => {
-  const { totalRounds, step, totalSteps } = useCandidates()
-  const roundText = totalRounds === 2 ? 'Final' : `Round of ${totalRounds}`
+  const { candidates, isGameEnded } = useCandidates()
+  const rest = candidates.length
+  const title = rest === 1 ? 'Final Winner'
+    : 2 ? 'Final'
+    : rest === 4 ? 'Semi-Final'
+    : rest === 8 ? 'Quarter-Final'
+    : 'Preliminary Round'
 
   return (
     <HeaderText>
-      Pick your Neighbors ({roundText} {step + 1}/{totalSteps})
+      <h3>{title} {isGameEnded ? 'Winner' : ''}</h3>
+      <p>Which one touches the heart more?</p>
     </HeaderText>
   )
 }

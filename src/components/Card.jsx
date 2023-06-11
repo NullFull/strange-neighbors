@@ -11,12 +11,14 @@ const Image = styled.div`
 `
 
 const Wrapper = styled.div`
-  min-width: 0;
-  flex-grow: 1;
-  height: 100%;
+  width: 400px;
+  height: 600px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+  overflow: hidden;
 `
 
-const Card = ({ imageUrl, name, onClick }) => {
+const Card = ({ imageUrl, onClick }) => {
   return (
     <Wrapper onClick={onClick}>
       <Image imageUrl={imageUrl} />

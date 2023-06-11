@@ -2,6 +2,14 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useCandidates } from '../hooks/candidates'
 import CardSelector from './CardSelector'
+import styled from '@emotion/styled'
+
+const Button = styled.button`
+  margin: 0.5rem;
+  padding: 1rem;
+  font-size: 1.8rem;
+  border-radius: 8px;
+`
 
 const NextStepButton = ({
   isLastStep,
@@ -10,9 +18,9 @@ const NextStepButton = ({
   goNextStep,
 }) => {
   return isLastStep ? (
-    <button onClick={goNextRound}>Next Round</button>
+    <Button onClick={goNextRound}>Next Round</Button>
   ) : (
-    <button onClick={goNextStep}>Next Step</button>
+    <Button onClick={goNextStep}>Next</Button>
   )
 }
 
