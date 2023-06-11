@@ -9,12 +9,17 @@ const HeaderText = styled.header`
 `
 
 const Header = () => {
-  const { candidates, isGameEnded } = useCandidates()
+  const { candidates, round, isGameEnded } = useCandidates()
   const rest = candidates.length
-  const title = rest === 2 ? 'Final'
-    : rest === 4 ? 'Semi-Final'
-    : rest === 8 ? 'Quarter-Final'
-    : 'Preliminary Round'
+  // const title = rest === 2 ? 'Final'
+  //   : rest === 4 ? 'Semi-Final'
+  //   : rest === 8 ? 'Quarter-Final'
+  //   : 'Preliminary Round'
+
+  const title = round === 1 ? 'Preliminary Round'
+    : round === 2 ? 'Quarter-Final'
+    : round === 3 ? 'Semi-Final'
+    : 'Final'
 
   return (
     <HeaderText>
