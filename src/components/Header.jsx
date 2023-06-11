@@ -11,8 +11,7 @@ const HeaderText = styled.header`
 const Header = () => {
   const { candidates, isGameEnded } = useCandidates()
   const rest = candidates.length
-  const title = rest === 1 ? 'Final Winner'
-    : 2 ? 'Final'
+  const title = rest === 2 ? 'Final'
     : rest === 4 ? 'Semi-Final'
     : rest === 8 ? 'Quarter-Final'
     : 'Preliminary Round'
