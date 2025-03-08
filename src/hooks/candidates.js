@@ -94,7 +94,7 @@ const CandidatesProvider = ({ children }) => {
   const [round, setRound] = useState(0)
   const [showResult, setShowResult] = useState(false)
 
-  const totalRounds = Math.log(candidates.length) / Math.log(2)
+  const totalRounds = Math.log(16) / Math.log(2)
   const totalSteps = candidates.length / 2
   const isGameEnded = round === totalRounds
 
