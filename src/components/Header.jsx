@@ -16,10 +16,11 @@ const Header = () => {
   //   : rest === 8 ? 'Quarter-Final'
   //   : 'Preliminary Round'
 
-  const title = round === 1 ? 'Preliminary Round'
-    : round === 2 ? 'Quarter-Final'
-    : round === 3 ? 'Semi-Final'
-    : 'Final'
+  const title = round === 0 ? 'Preliminary Round'
+    : round === 1 ? 'Quarter-Final'
+    : round === 2 ? 'Semi-Final'
+    : round === 3 ? 'Final'
+    : 'Additional Round'
 
   return (
     <HeaderText>
