@@ -96,7 +96,7 @@ const CandidatesProvider = ({ children }) => {
 
   const totalRounds = Math.log(16) / Math.log(2)
   const totalSteps = candidates.length / 2
-  const isGameEnded = round === totalRounds
+  const isGameEnded = round === (totalRounds - 1)
 
   return (
     <CandidatesContext.Provider
